@@ -1,0 +1,3048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simon Flannery | Health, Wellness & Performance — London & Southsea</title>
+<meta name="description" content="Simon Flannery — BSc Sports Science. Personal Training, Reflexology, Massage & Group Training in Central London and Portsmouth/Southsea. 28 years in health & wellness.">
+<style>
+/* ============================================
+   CSS RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue: #6BB6FF;
+  --blue-dark: #003D7A;
+  --teal: #6BB6FF;
+  --teal-dark: #4A90D9;
+  --cream: #FFFDF7;
+  --cream-dark: #F5F0E8;
+  --charcoal: #2D3436;
+  --charcoal-light: #636E72;
+  --white: #FFFFFF;
+  --shadow-soft: 0 8px 32px rgba(45, 52, 54, 0.08);
+  --shadow-medium: 0 12px 40px rgba(45, 52, 54, 0.12);
+  --radius: 20px;
+  --radius-lg: 32px;
+  --radius-sm: 12px;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-secondary {
+  background: var(--teal);
+  color: var(--white);
+}
+
+/* Nav buttons: override .nav-links a grey colour */
+.nav-links .btn-primary,
+.nav-links .btn-secondary {
+  color: var(--white) !important;
+}
+
+.btn-secondary:hover {
+  background: var(--teal-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--blue);
+  border: 2.5px solid var(--blue);
+}
+
+.btn-outline:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.section-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: bold;
+  color: var(--charcoal);
+  text-align: center;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--charcoal-light);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   DECORATIVE BLOBS
+   ============================================ */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-coral {
+  background: var(--blue);
+}
+
+.blob-teal {
+  background: var(--teal);
+}
+
+.blob-yellow {
+  background: var(--teal);
+}
+
+/* Keep decorative blobs from creating horizontal scroll on mobile */
+.about,
+.goals,
+.locations,
+.faq,
+.testimonials {
+  overflow-x: hidden;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 253, 247, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.nav-logo-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: var(--charcoal);
+  letter-spacing: -0.3px;
+}
+
+.nav-logo-text span {
+  color: var(--teal);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: -2px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--charcoal-light);
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--blue);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--blue);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+/* ============================================
+   HERO — Full-width background image
+   ============================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+  background: url('hero-bg.jpg') center center / cover no-repeat;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(45, 52, 54, 0.78) 0%,
+    rgba(45, 52, 54, 0.60) 50%,
+    rgba(45, 52, 54, 0.25) 100%
+  );
+  z-index: 1;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  max-width: 640px;
+  margin: 0;
+  padding: 0 24px 0 60px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal);
+  color: var(--charcoal);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+  animation: gentleBounce 3s ease-in-out infinite;
+}
+
+.hero-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.hero h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: bold;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 20px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.hero h1 em {
+  color: var(--teal);
+  font-style: normal;
+  position: relative;
+}
+
+.hero h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: var(--blue);
+  opacity: 0.4;
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 40px;
+  line-height: 1.7;
+  max-width: 540px;
+  margin-left: 0;
+  margin-right: auto;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.hero p strong {
+  color: var(--white);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.hero .btn-primary {
+  background: var(--blue);
+  box-shadow: 0 8px 24px rgba(0, 0, 255, 0.3);
+}
+
+.hero .btn-primary:hover {
+  background: var(--blue-dark);
+  box-shadow: 0 12px 32px rgba(0, 0, 255, 0.4);
+}
+
+.hero .btn-outline {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.hero .btn-outline:hover {
+  background: var(--white);
+  color: var(--charcoal);
+}
+
+/* ============================================
+   ABOUT
+   ============================================ */
+.about {
+  padding: 100px 0;
+  position: relative;
+}
+
+.about-blob {
+  width: 500px;
+  height: 500px;
+  top: -100px;
+  left: -200px;
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.about-photo-wrap {
+  position: relative;
+  top: 20px;
+}
+
+.about-photo {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  object-position: center 20%;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  z-index: 1;
+}
+
+.about-photo-frame {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1;
+  border: 4px solid var(--blue);
+  border-radius: var(--radius-lg);
+  z-index: 0;
+}
+
+.about-photo-dots {
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 12px);
+  gap: 8px;
+  z-index: 2;
+}
+
+.about-photo-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.about-photo-dots span:nth-child(2n) {
+  background: var(--blue);
+}
+
+.about-photo-dots span:nth-child(3n) {
+  background: var(--teal);
+}
+
+.about-content h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--charcoal);
+}
+
+.about-content h2 em {
+  color: var(--blue);
+  font-style: normal;
+}
+
+.about-content p {
+  color: var(--charcoal-light);
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+}
+
+.about-content strong {
+  color: var(--charcoal);
+}
+
+.about-signature {
+  margin-top: 28px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  color: var(--teal-dark);
+  font-style: italic;
+}
+
+/* ============================================
+   SERVICES
+   ============================================ */
+.services {
+  padding: 100px 0;
+  background: url('services-bg.jpg') center center / cover no-repeat;
+  position: relative;
+}
+
+.services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 25, 35, 0.82);
+  z-index: 0;
+}
+
+.services .container {
+  position: relative;
+  z-index: 1;
+}
+
+.services .section-title {
+  color: var(--white);
+}
+
+.services .section-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--blue);
+  border-radius: var(--radius) var(--radius) 0 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  border-color: rgba(107, 182, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  font-size: 1.6rem;
+}
+
+.service-card:nth-child(1) .service-icon { background: rgba(107, 182, 255, 0.18); }
+.service-card:nth-child(2) .service-icon { background: rgba(107, 182, 255, 0.18); }
+.service-card:nth-child(3) .service-icon { background: rgba(107, 182, 255, 0.18); }
+.service-card:nth-child(4) .service-icon { background: rgba(107, 182, 255, 0.18); }
+
+.service-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+.service-card p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.service-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.service-tag {
+  display: inline-block;
+  background: rgba(107, 182, 255, 0.2);
+  color: var(--teal);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* ============================================
+   LOCATIONS
+   ============================================ */
+.locations {
+  padding: 100px 0;
+  position: relative;
+}
+
+.locations-blob {
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--teal);
+  opacity: 0.2;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.location-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.location-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.location-card:nth-child(1)::after { background: var(--blue); }
+.location-card:nth-child(2)::after { background: var(--teal); }
+
+.location-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
+}
+
+.location-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 2rem;
+}
+
+.location-card:nth-child(1) .location-icon { background: rgba(255, 107, 107, 0.12); }
+.location-card:nth-child(2) .location-icon { background: rgba(78, 205, 196, 0.12); }
+
+.location-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  color: var(--charcoal);
+}
+
+.location-card .area {
+  color: var(--charcoal-light);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.location-details {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.location-details li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--cream-dark);
+  font-size: 0.95rem;
+  color: var(--charcoal-light);
+}
+
+.location-details li:last-child {
+  border-bottom: none;
+}
+
+.location-details svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.location-card:nth-child(1) .location-details svg { color: var(--blue); }
+.location-card:nth-child(2) .location-details svg { color: var(--teal); }
+
+/* ============================================
+   QUALIFICATIONS
+   ============================================ */
+.qualifications {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--blue) 0%, #003D7A 100%);
+  position: relative;
+}
+
+.qualifications .section-title {
+  color: var(--white);
+}
+
+.qualifications .section-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.quals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.qual-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  transition: all 0.3s ease;
+}
+
+.qual-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.qual-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--blue);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+}
+
+.qual-card:nth-child(1) .qual-icon { background: var(--teal); color: var(--charcoal); }
+.qual-card:nth-child(2) .qual-icon { background: var(--teal); color: var(--charcoal); }
+.qual-card:nth-child(3) .qual-icon { background: var(--teal); color: var(--charcoal); }
+
+.qual-text h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+  color: var(--charcoal);
+}
+
+.qual-text p {
+  color: var(--charcoal-light);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* ============================================
+   TESTIMONIALS
+   ============================================ */
+.testimonials {
+  padding: 100px 0;
+  position: relative;
+}
+
+.testimonials-blob {
+  width: 350px;
+  height: 350px;
+  top: -80px;
+  right: -100px;
+}
+
+.testimonials-grid {
+  columns: 3;
+  column-gap: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonials-slider-nav {
+  display: none;
+}
+
+.testimonial-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  break-inside: avoid;
+  margin-bottom: 28px;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.testimonial-quote {
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--blue);
+  opacity: 0.3;
+  font-family: Georgia, serif;
+  margin-bottom: -10px;
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  color: var(--charcoal);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--white);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.testimonial-name {
+  font-weight: 700;
+  color: var(--charcoal);
+  font-size: 0.95rem;
+}
+
+.testimonial-location {
+  color: var(--charcoal-light);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   CONTACT / CTA
+   ============================================ */
+.contact {
+  padding: 100px 0;
+  position: relative;
+}
+
+.contact-inner {
+  background: linear-gradient(135deg, var(--blue) 0%, #6BB6FF 100%);
+  border-radius: var(--radius-lg);
+  padding: 64px 48px;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(255, 107, 107, 0.25);
+}
+
+.contact-inner::before,
+.contact-inner::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-inner::before {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  right: -80px;
+}
+
+.contact-inner::after {
+  width: 200px;
+  height: 200px;
+  bottom: -60px;
+  left: -40px;
+}
+
+.contact-inner h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-inner p {
+  font-size: 1.15rem;
+  opacity: 0.95;
+  max-width: 560px;
+  margin: 0 auto 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-btn {
+  background: var(--white);
+  color: var(--blue);
+  padding: 18px 44px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.contact-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+}
+
+.contact-options {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.contact-option svg {
+  width: 20px;
+  height: 20px;
+}
+
+a.contact-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a.contact-link:hover {
+  color: var(--blue);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.7);
+  padding: 48px 0 32px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.footer-logo span {
+  color: var(--teal);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.footer-tagline {
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--blue);
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ============================================
+   V2 SECTIONS — Approach, Goals, Online, Journey,
+   Pricing, Decades, Community, FAQ, Form, Privacy
+   ============================================ */
+
+/* Hero trust chips */
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.hero-trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  color: var(--white);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.hero-trust svg {
+  width: 15px;
+  height: 15px;
+  color: var(--teal);
+}
+
+/* About highlights */
+.about-highlights {
+  display: grid;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.about-highlight {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.about-highlight-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(107, 182, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.15rem;
+}
+
+.about-highlight h3 {
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+  color: var(--charcoal);
+}
+
+.about-highlight p {
+  font-size: 0.88rem;
+  color: var(--charcoal-light);
+  margin: 0;
+}
+
+/* Approach */
+.approach {
+  padding: 100px 0;
+  background: var(--cream-dark);
+  position: relative;
+}
+
+.approach-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  color: var(--charcoal-light);
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.approach-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.approach-col {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+.approach-col:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
+}
+
+.approach-col h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.35rem;
+  letter-spacing: 3px;
+  color: var(--blue-dark);
+  margin-bottom: 18px;
+}
+
+.approach-col ul {
+  list-style: none;
+  color: var(--charcoal-light);
+}
+
+.approach-col li {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--cream-dark);
+  font-size: 0.95rem;
+}
+
+.approach-col li:last-child {
+  border-bottom: none;
+}
+
+/* Goals — How Simon can help */
+.goals {
+  padding: 100px 0;
+  position: relative;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.goal-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px 26px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+  border-top: 5px solid var(--blue);
+}
+
+.goal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
+}
+
+.goal-card .goal-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.goal-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  color: var(--charcoal);
+}
+
+.goal-card p {
+  color: var(--charcoal-light);
+  font-size: 0.92rem;
+}
+
+/* Online PT */
+.online {
+  padding: 100px 0;
+  background: var(--cream-dark);
+  position: relative;
+}
+
+.online-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.online-content h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 16px;
+  color: var(--charcoal);
+}
+
+.online-content h2 em {
+  color: var(--blue);
+  font-style: normal;
+}
+
+.online-content > p {
+  color: var(--charcoal-light);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+
+.online-list {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.online-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: var(--charcoal-light);
+  font-size: 0.98rem;
+}
+
+.online-list svg {
+  width: 22px;
+  height: 22px;
+  color: var(--blue);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.online-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 44px 40px;
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+  position: relative;
+}
+
+.online-card-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(107, 182, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 22px;
+}
+
+.online-card-icon svg {
+  width: 36px;
+  height: 36px;
+  color: var(--blue);
+}
+
+.online-card blockquote {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--charcoal);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.online-card cite {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+
+.online-card .online-card-sub {
+  font-size: 0.82rem;
+  color: var(--charcoal-light);
+}
+
+/* Pricing */
+.pricing {
+  padding: 100px 0;
+  position: relative;
+}
+
+.pricing-table-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  overflow-x: auto;
+  position: relative;
+  z-index: 1;
+}
+
+table.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.pricing-table th {
+  background: var(--blue);
+  color: var(--white);
+  text-align: left;
+  padding: 14px 20px;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.pricing-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--cream-dark);
+  color: var(--charcoal-light);
+  font-size: 0.95rem;
+}
+
+.pricing-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pricing-table td:first-child {
+  color: var(--charcoal);
+  font-weight: 600;
+}
+
+.pricing-enquire {
+  color: var(--blue);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pricing-note {
+  text-align: center;
+  color: var(--charcoal-light);
+  font-size: 0.85rem;
+  margin-top: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Journey — what to expect */
+.journey {
+  padding: 100px 0;
+  background: var(--cream-dark);
+  position: relative;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-medium);
+}
+
+.step-num {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: var(--blue);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.step-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--charcoal);
+}
+
+.step-card p {
+  color: var(--charcoal-light);
+  font-size: 0.95rem;
+}
+
+.journey-btn-wrap {
+  text-align: center;
+  margin-top: 44px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Decades strip (testimonials) */
+.decades-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.decade-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 26px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+
+.decade-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--blue-dark);
+  font-size: 1.45rem;
+  margin-bottom: 4px;
+}
+
+.decade-card p {
+  color: var(--charcoal-light);
+  font-size: 0.88rem;
+}
+
+/* Community */
+.community {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--blue) 0%, #003D7A 100%);
+  position: relative;
+}
+
+.community .section-title {
+  color: var(--white);
+}
+
+.community .section-subtitle {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.community-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  backdrop-filter: blur(8px);
+}
+
+.community-card h3 {
+  color: var(--white);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.community-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.92rem;
+}
+
+.community-btn-wrap {
+  text-align: center;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.community .btn-community {
+  background: var(--white);
+  color: var(--blue-dark);
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.community .btn-community:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* FAQ */
+.faq {
+  padding: 100px 0;
+  position: relative;
+}
+
+.faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.faq-group-title {
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin: 32px 0 14px;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+
+.faq-group-title:first-child {
+  margin-top: 0;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 18px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: inherit;
+}
+
+.faq-q svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--blue);
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-q svg {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-a p {
+  padding: 0 22px 18px;
+  color: var(--charcoal-light);
+  font-size: 0.95rem;
+}
+
+/* Contact form */
+.contact-inner {
+  margin-bottom: 90px;
+}
+
+.contact-form-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+  padding: 48px;
+  max-width: 720px;
+  margin: -140px auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-form-card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  text-align: center;
+  color: var(--charcoal);
+}
+
+.form-sub {
+  text-align: center;
+  color: var(--charcoal-light);
+  margin-bottom: 28px;
+  font-size: 0.95rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 13px 16px;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--charcoal);
+  background: var(--cream);
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-submit-wrap {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.form-hidden {
+  display: none;
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 32px 0 16px;
+}
+
+.form-success-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(107, 182, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.form-success-icon svg {
+  width: 30px;
+  height: 30px;
+  color: var(--blue);
+}
+
+.form-success h4 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: var(--charcoal);
+}
+
+.form-success p {
+  color: var(--charcoal-light);
+  font-size: 0.95rem;
+}
+
+/* Privacy modal */
+.privacy-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.privacy-modal.open {
+  display: flex;
+}
+
+.privacy-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(45, 52, 54, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.privacy-box {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 44px;
+  box-shadow: var(--shadow-medium);
+}
+
+.privacy-box h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+  color: var(--charcoal);
+}
+
+.privacy-box h3 {
+  margin: 20px 0 8px;
+  font-size: 1.02rem;
+  color: var(--charcoal);
+}
+
+.privacy-box p {
+  color: var(--charcoal-light);
+  font-size: 0.92rem;
+  margin-bottom: 10px;
+}
+
+.privacy-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--cream-dark);
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--charcoal);
+}
+
+/* Mobile menu open state */
+@media (max-width: 900px) {
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 16px 24px 24px;
+    gap: 2px;
+    box-shadow: var(--shadow-medium);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .nav-links.mobile-open li a:not(.btn) {
+    display: block;
+    padding: 12px;
+  }
+
+  .nav-links.mobile-open li .btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* V2 section responsiveness */
+@media (max-width: 900px) {
+  .approach-cols,
+  .steps-grid,
+  .decades-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .online-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-card {
+    padding: 32px 22px;
+  }
+
+  .contact-inner {
+    margin-bottom: 110px;
+  }
+}
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .hero-inner,
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .hero-foot-circle {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-foot-circle svg {
+    width: 160px;
+    height: 160px;
+  }
+
+  .about-photo-wrap {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .contact-inner {
+    padding: 48px 28px;
+  }
+
+  .testimonials-grid {
+    display: flex;
+    columns: unset;
+    column-gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 6px 0 14px;
+  }
+
+  .testimonials-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonial-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    scroll-snap-align: center;
+    margin-bottom: 0;
+  }
+
+  .testimonials-grid .testimonial-card.reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .testimonials-slider-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .testimonial-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: var(--white);
+    color: var(--blue-dark);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .testimonial-arrow:hover {
+    background: var(--blue);
+    color: var(--white);
+  }
+
+  .testimonial-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .testimonial-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .testimonial-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cream-dark);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .testimonial-dot.active {
+    background: var(--blue);
+    width: 22px;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 100px 0 60px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-options {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="nav-logo">
+      <img src="simon-logo.svg" alt="Simon Flannery" class="nav-logo-icon">
+      <div class="nav-logo-text">
+        Simon Flannery
+        <span>Health &amp; Wellness</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="btn btn-primary" style="padding:10px 22px;font-size:0.85rem;">Book Now</a></li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2.5" stroke-linecap="round">
+        <line x1="4" y1="6" x2="20" y2="6"/>
+        <line x1="4" y1="12" x2="20" y2="12"/>
+        <line x1="4" y1="18" x2="20" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2D3436" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+      28 Years in Health &amp; Wellness
+    </div>
+    <h1>Train, Treat &amp; Thrive with <em>Simon Flannery</em></h1>
+    <p>Feel stronger, move better and find your balance. Personal training, reflexology and therapeutic massage, backed by over 28 years of experience in health and wellbeing.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary">Book a Session</a>
+      <a href="#services" class="btn btn-outline">Explore Services</a>
+    </div>
+    <div class="hero-trust">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>
+        28+ Years Experience
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        BSc Sports Science
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        London &amp; Southsea
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ABOUT
+     ============================================ -->
+<section class="about" id="about">
+  <div class="blob blob-teal about-blob"></div>
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-photo-wrap reveal">
+        <img src="simon-new.jpg?v=20261103" alt="Simon Flannery, health and wellness practitioner" class="about-photo">
+        <div class="about-photo-frame"></div>
+        <div class="about-photo-dots">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <h2>Meet <em>Simon</em></h2>
+        <p>Simon Flannery is a <strong>BSc Sports Science graduate</strong> who has been in the health and wellness industry for the last <strong>28 years</strong>. Since completing his degree in 1995, he's built a career around one simple belief: understanding what's really going on in your body — especially the impact of stress — is the key to lasting health.</p>
+        <p>After university, Simon travelled extensively through <strong>South East Asia</strong>, where he learned Reflexology in <strong>Penang, Malaysia</strong> — specifically a Taiwanese technique called <strong>Rho Shur</strong>, a much deeper treatment compared to conventional approaches. On returning to the UK, he gained formal qualifications in both reflexology and massage to give his clients a truly <strong>holistic approach</strong> to health and fitness.</p>
+        <p>Simon was club manager for celebrity trainer <strong>Matt Roberts</strong>, based in 5-star hotels in Kensington and Mayfair. He went solo in <strong>2004</strong>, operating as a freelance personal trainer from the <strong>Metropolitan Hotel</strong> in Mayfair where he remains to this day — spending the rest of his week at home in <strong>Southsea, Portsmouth</strong>.</p>
+        <div class="about-highlights">
+          <div class="about-highlight">
+            <div class="about-highlight-icon">🏃</div>
+            <div>
+              <h3>Endurance Background</h3>
+              <p>Five London Marathons, several triathlons, and ride captain for Sigma Sports in Kingston.</p>
+            </div>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon">💻</div>
+            <div>
+              <h3>Online Coaching</h3>
+              <p>Since Covid, Simon has coached clients remotely all over the UK — some he's never met in person.</p>
+            </div>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon">🤝</div>
+            <div>
+              <h3>Community &amp; Wellbeing</h3>
+              <p>Health and wellness lead for SPEAK_UK, a Portsmouth mental health charity supporting young men, running group sessions for men's wellbeing.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-signature">— Simon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SIMON'S APPROACH
+     ============================================ -->
+<section class="approach" id="approach">
+  <div class="container">
+    <h2 class="section-title reveal">A Different Approach to <em style="color:var(--blue);font-style:normal;">Health &amp; Wellbeing</em></h2>
+    <p class="approach-intro reveal">True wellbeing isn't just about how much you can lift or how far you can run. It's about understanding your body, recognising the effects of stress, and finding the right balance between movement, recovery and everyday life.</p>
+    <div class="approach-cols">
+      <div class="approach-col reveal">
+        <h3>MOVE</h3>
+        <ul>
+          <li>Personal Training</li>
+          <li>Strength &amp; Conditioning</li>
+          <li>Mobility &amp; Flexibility</li>
+        </ul>
+      </div>
+      <div class="approach-col reveal">
+        <h3>RECOVER</h3>
+        <ul>
+          <li>Therapeutic Massage</li>
+          <li>Sports Massage</li>
+          <li>Reflexology</li>
+        </ul>
+      </div>
+      <div class="approach-col reveal">
+        <h3>THRIVE</h3>
+        <ul>
+          <li>Stress Management</li>
+          <li>Healthy Habits</li>
+          <li>Long-Term Wellbeing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SERVICES
+     ============================================ -->
+<section class="services" id="services">
+  <div class="container">
+    <h2 class="section-title reveal">Services</h2>
+    <p class="section-subtitle reveal">From one-to-one training to deep-tissue healing — every service is built around understanding your body and what it needs.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="icon-pt.png?v=20261103" alt="" width="36" height="36" style="display:block;">
+        </div>
+        <h3>Personal Training</h3>
+        <p>A 90-minute initial assessment — online or in person — covering mobility, stabilisation, functional movement, and strength. Includes exercise prescription and nutritional guidance. Follow-up sessions are 1 hour.</p>
+        <div class="service-meta">
+          <span class="service-tag">90 min assessment</span>
+          <span class="service-tag">1 hr sessions</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="icon-group.png?v=20261103" alt="" width="36" height="36" style="display:block;">
+        </div>
+        <h3>Group Training</h3>
+        <p>High-energy 60-minute sessions for 2–10 participants. Great for building camaraderie, accountability, and results — whether you're training with friends, colleagues, or a local community group.</p>
+        <div class="service-meta">
+          <span class="service-tag">60 min</span>
+          <span class="service-tag">2–10 people</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="icon-reflexology.png?v=20261103" alt="" width="36" height="36" style="display:block;">
+        </div>
+        <h3>Reflexology</h3>
+        <p>60 or 90-minute treatments using <strong>Rho Shur</strong> — a deeper Taiwanese technique learned in Malaysia. Simon works reflex points on the feet to ease tension and encourage deep relaxation. Most clients find it so restorative they book regular sessions as part of their overall wellbeing.</p>
+        <div class="service-meta">
+          <span class="service-tag">60 min</span>
+          <span class="service-tag">90 min</span>
+          <span class="service-tag">Rho Shur</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <img src="icon-massage.png?v=20261103" alt="" width="36" height="36" style="display:block;">
+        </div>
+        <h3>Massage</h3>
+        <p>60 or 90-minute therapeutic treatments covering deep tissue and sports massage, with techniques that support recovery alongside any medical care you're receiving. Whether you're managing chronic tension or training hard, Simon tailors pressure and technique to your needs.</p>
+        <div class="service-meta">
+          <span class="service-tag">60 min</span>
+          <span class="service-tag">90 min</span>
+          <span class="service-tag">Deep Tissue</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     HOW SIMON CAN HELP YOU
+     ============================================ -->
+<section class="goals" id="goals">
+  <div class="blob blob-teal locations-blob" style="top:20%;left:70%;"></div>
+  <div class="container">
+    <h2 class="section-title reveal">Your Health. Your Goals. <em style="color:var(--blue);font-style:normal;">Your Journey.</em></h2>
+    <p class="section-subtitle reveal">Not sure which service is right for you? Start with what you want to achieve — Simon will take it from there.</p>
+    <div class="goals-grid">
+      <div class="goal-card reveal">
+        <span class="goal-label">Your Goal</span>
+        <h3>Build Strength &amp; Fitness</h3>
+        <p>Personalised training designed around your abilities, your goals and the way your body actually moves.</p>
+      </div>
+      <div class="goal-card reveal">
+        <span class="goal-label">Your Goal</span>
+        <h3>Relieve Stress &amp; Tension</h3>
+        <p>Reflexology and therapeutic massage to help you unwind, recharge and feel like yourself again.</p>
+      </div>
+      <div class="goal-card reveal">
+        <span class="goal-label">Your Goal</span>
+        <h3>Move Better &amp; Feel Stronger</h3>
+        <p>Improve mobility, flexibility, balance and functional strength for everyday life and sport.</p>
+      </div>
+      <div class="goal-card reveal">
+        <span class="goal-label">Your Goal</span>
+        <h3>Stay Active as You Age</h3>
+        <p>Maintain independence, confidence and physical wellbeing — whatever stage of life you're at.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     ONLINE PERSONAL TRAINING
+     ============================================ -->
+<section class="online" id="online">
+  <div class="container">
+    <div class="online-inner">
+      <div class="online-content reveal">
+        <h2>Expert Personal Training. <em>Wherever You Are.</em></h2>
+        <p>Several of Simon's long-standing clients train with him remotely — some for years, some without ever meeting in a gym. All you need is a screen and a little space.</p>
+        <ul class="online-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Live one-to-one sessions via video — wherever you live
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Personalised exercise programmes built around your goals
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Train from home, your work gym, or your own equipment
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Flexible sessions that fit around your lifestyle
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Expert guidance, technique-checks and accountability every session
+          </li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Try Online Training</a>
+      </div>
+      <div class="online-card reveal">
+        <div class="online-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 7l-7 5 7 5V7z"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <blockquote>"I find it just as good to train remotely with Simon… he is absolutely brilliant at seeing if I am training correctly and I feel fitter and better than ever."</blockquote>
+        <cite>Tamsin, 57</cite>
+        <div class="online-card-sub">Online PT client for 18 years — via Zoom, every week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRICING
+     ============================================ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2 class="section-title reveal">Invest in Your Wellbeing</h2>
+    <p class="section-subtitle reveal">Every service starts with a conversation. Sessions vary between London and Portsmouth — get in touch for current rates.</p>
+    <div class="pricing-table-wrap reveal">
+      <table class="pricing-table">
+        <thead>
+          <tr><th>Service</th><th>Duration</th><th>Booking</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Initial Personal Training Assessment</td><td>90 minutes</td><td><a href="#contact" class="pricing-enquire">Enquire</a></td></tr>
+          <tr><td>Personal Training</td><td>60 minutes</td><td><a href="#contact" class="pricing-enquire">Enquire</a></td></tr>
+          <tr><td>Online Personal Training</td><td>60 minutes</td><td><a href="#contact" class="pricing-enquire">Enquire</a></td></tr>
+          <tr><td>Reflexology</td><td>60 / 90 minutes</td><td><a href="#contact" class="pricing-enquire">Enquire</a></td></tr>
+          <tr><td>Therapeutic Massage</td><td>60 / 90 minutes</td><td><a href="#contact" class="pricing-enquire">Enquire</a></td></tr>
+          <tr><td>Group Training</td><td>60 minutes</td><td><a href="#contact" class="pricing-enquire">Enquire</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pricing-note">Block booking and regular client rates available — just ask.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     WHAT TO EXPECT
+     ============================================ -->
+<section class="journey" id="journey">
+  <div class="container">
+    <h2 class="section-title reveal">Your Journey Starts Here</h2>
+    <p class="section-subtitle reveal">Never worked with a personal trainer or reflexologist before? Here's exactly how it works.</p>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <h3>Let's Talk</h3>
+        <p>Get in touch to discuss your goals, concerns and what you're hoping to achieve — no pressure, no obligation.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">02</div>
+        <h3>Your Personal Assessment</h3>
+        <p>Simon takes time to understand your lifestyle, movement, fitness and individual needs before anything else.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">03</div>
+        <h3>Your Personalised Plan</h3>
+        <p>Begin working towards your goals with tailored sessions and ongoing support — in person or online.</p>
+      </div>
+    </div>
+    <div class="journey-btn-wrap reveal">
+      <a href="#contact" class="btn btn-primary">Book Your Initial Consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     LOCATIONS
+     ============================================ -->
+<section class="locations" id="locations">
+  <div class="blob blob-yellow locations-blob"></div>
+  <div class="container">
+    <h2 class="section-title reveal">Where to Find Me</h2>
+    <p class="section-subtitle reveal">I split my week between London and Portsmouth. Here's when and where I'm available.</p>
+    <div class="locations-grid">
+      <div class="location-card reveal">
+        <div class="location-icon">🏙️</div>
+        <h3>Central London</h3>
+        <p class="area">Mayfair &amp; Kensington</p>
+        <ul class="location-details">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Metropolitan Hotel, Mayfair + various Kensington locations
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            <strong>Wednesdays &amp; Thursdays</strong> — face-to-face PT
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Online coaching available nationwide
+          </li>
+        </ul>
+        <a href="mailto:siflannery@hotmail.com?subject=Booking%20Enquiry%20-%20London" class="btn btn-primary" style="padding:12px 28px;font-size:0.95rem;">Enquire — London</a>
+      </div>
+      <div class="location-card reveal">
+        <div class="location-icon">🌊</div>
+        <h3>Portsmouth &amp; Southsea</h3>
+        <p class="area">Hampshire coast</p>
+        <ul class="location-details">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Southsea, Portsmouth + SPEAK_UK community sessions
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            <strong>Rest of the week</strong> — Reflexology, Massage, PT &amp; Group Training
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Group wellbeing sessions with SPEAK_UK
+          </li>
+        </ul>
+        <a href="mailto:siflannery@hotmail.com?subject=Booking%20Enquiry%20-%20Portsmouth" class="btn btn-secondary" style="padding:12px 28px;font-size:0.95rem;">Enquire — Portsmouth</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     QUALIFICATIONS
+     ============================================ -->
+<section class="qualifications" id="qualifications">
+  <div class="container">
+    <h2 class="section-title reveal">Qualifications</h2>
+    <p class="section-subtitle reveal">Formal training backed by decades of hands-on experience.</p>
+    <div class="quals-grid">
+      <div class="qual-card reveal">
+        <div class="qual-icon">🎓</div>
+        <div class="qual-text">
+          <h3>BSc (Hons) Sports Science</h3>
+          <p>The foundation of Simon's holistic approach — understanding biomechanics, physiology, and how the body responds to stress and movement.</p>
+        </div>
+      </div>
+      <div class="qual-card reveal">
+        <div class="qual-icon">🙌</div>
+        <div class="qual-text">
+          <h3>ITEC Diploma in Massage</h3>
+          <p>Fully qualified in therapeutic, deep tissue, sports and recovery massage techniques.</p>
+        </div>
+      </div>
+      <div class="qual-card reveal">
+        <div class="qual-icon">🦶</div>
+        <div class="qual-text">
+          <h3>ITEC Diploma in Reflexology</h3>
+          <p>Trained at the <strong>Phillip Salmon School of Reflexology</strong>, with additional Rho Shur technique certification from Penang, Malaysia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TESTIMONIALS
+     ============================================ -->
+<section class="testimonials" id="testimonials">
+  <div class="blob blob-coral testimonials-blob"></div>
+  <div class="container">
+    <h2 class="section-title reveal">What Clients Say</h2>
+    <p class="section-subtitle reveal">Twenty-eight years of helping people move better, feel better, and live better.</p>
+    <div class="decades-grid">
+      <div class="decade-card reveal">
+        <h3>25+ Years</h3>
+        <p>Long-standing client relationships</p>
+      </div>
+      <div class="decade-card reveal">
+        <h3>Personalised</h3>
+        <p>Individual approaches to training &amp; wellbeing</p>
+      </div>
+      <div class="decade-card reveal">
+        <h3>In Person &amp; Online</h3>
+        <p>Flexible ways to work together</p>
+      </div>
+    </div>
+    <div class="testimonials-grid" id="testimonialsGrid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Simon has trained me for 15 years on building my core strength, and has also done reflexology on a regular basis for me. He is a superb trainer. Each session has been game changing for me and leaves me feeling transformed. I travel a lot and work long hours, resulting in stiffness and lots of aches and pains. He has helped me address each of these, by tailoring his programme to suit my particular needs. He knows exactly how my body is coping and what techniques help best address my issues. His training combines science with wellness, delivered in the most caring and fun way.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">C</div>
+          <div>
+            <div class="testimonial-name">Long-term Client</div>
+            <div class="testimonial-location">London — PT &amp; Reflexology, 15 years</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Simon has been my trainer for over 18 years. I used to find it difficult to see him face to face in the gym so was very grateful when he offered to train via Zoom. Since then I have 'seen' him almost every week — there is never a reason not to. I find it just as good to train remotely with Simon, especially as I now have my own home gym, kitted out with his advice. He is absolutely brilliant at seeing if I am training correctly and I feel fitter and better than ever.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">T</div>
+          <div>
+            <div class="testimonial-name">Tamsin, 57</div>
+            <div class="testimonial-location">London — Online PT, 18 years</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">I have trained with Simon weekly for 18 years. I can honestly say that his expertise, and focus on the individual, has been a major contributor to my good health in that time.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">T</div>
+          <div>
+            <div class="testimonial-name">Teddy, 56</div>
+            <div class="testimonial-location">London — Personal Training, 18 years</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Simon has been my fitness trainer for about 7 years now. Occasionally in person, most our weekly sessions are by video with me either at home on a mat or in the gym at my work. Simon is genuinely excellent at his job — he cares deeply about delivering a top service and carefully crafts all our sessions to meet my needs. He pushes me hard (but not ridiculously hard) and encourages me all the time. We laugh along the way too, which makes it much more enjoyable! I thoroughly recommend him.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div>
+            <div class="testimonial-name">Dan Tyrer</div>
+            <div class="testimonial-location">Lawyer — Online PT, 7 years</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">I started my fitness journey with Simon on Zoom in lockdown and have achieved more than I ever thought was possible! I have gained so much confidence in my physical ability and now view training as part of my day-to-day routine. I am lifting PBs in the gym, after following Simon's curated training plan, as well as feeling strong enough to run long distance. Simon has also been fantastic getting me back on track with structured rehab after an ankle sprain. I would recommend Simon's services to anyone.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">V</div>
+          <div>
+            <div class="testimonial-name">Violet</div>
+            <div class="testimonial-location">Online PT — Post-lockdown journey</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">I've been training with Simon weekly for two and a half years, and the difference in my performance on the tennis court has been remarkable. After suffering a torn meniscus, I needed to rebuild real strength and stability in my knee and leg — Simon has been outstanding at guiding that process safely while keeping me improving. I'm noticeably faster, more agile, and move with far more confidence than before. What truly sets Simon apart is his holistic view of the body and his encyclopedic knowledge of anatomy. I'd wholeheartedly recommend Simon to anyone serious about their sport.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div>
+            <div class="testimonial-name">Rory Slater</div>
+            <div class="testimonial-location">Tennis — PT &amp; Rehab, 2.5 years</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">I have been a client of Simon's for over 25 years. Reflexology with Simon has always been an important part of my wellbeing. However, it has become absolutely vital in the last two years as I have been receiving treatment for Stage 4 metastatic cancer. My recovery from both major surgery and chemotherapy has been aided immeasurably by reflexology and it remains an incredibly important part of the ongoing management of long term conditions. I could not recommend Simon more highly.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Alex Hillier</div>
+            <div class="testimonial-location">Reflexology — 25+ years</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Simon is a unique find in the personal training space. No matter the fitness goal, his back-to-basics approach to building strength delivers stellar results, nurtures self-belief and provides a deep education of long-term health and wellness.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Martha Hooper</div>
+            <div class="testimonial-location">Personal Training</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials-slider-nav">
+      <button class="testimonial-arrow" id="testimonialPrev" aria-label="Previous testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="testimonial-dots" id="testimonialDots"></div>
+      <button class="testimonial-arrow" id="testimonialNext" aria-label="Next testimonial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     COMMUNITY — SPEAK_UK / MEN'S WELLBEING
+     ============================================ -->
+<section class="community" id="community">
+  <div class="container">
+    <h2 class="section-title reveal">Stronger Together</h2>
+    <p class="section-subtitle reveal">Fitness, community and young men's wellbeing in Portsmouth — Simon's work with SPEAK_UK.</p>
+    <div class="community-grid">
+      <div class="community-card reveal">
+        <h3>The SPEAK_UK Charity</h3>
+        <p>Simon works with SPEAK_UK, a mental health charity focused on supporting young men at risk of suicide, leading group physical training sessions for the young men they support.</p>
+      </div>
+      <div class="community-card reveal">
+        <h3>Men's Mental Health</h3>
+        <p>He runs group physical training sessions specifically designed to support men's mental health — because movement, connection and community go hand in hand.</p>
+      </div>
+      <div class="community-card reveal">
+        <h3>Group Training</h3>
+        <p>From community groups to friends and colleagues, Simon leads energising group sessions that build fitness, camaraderie and accountability.</p>
+      </div>
+    </div>
+    <div class="community-btn-wrap reveal">
+      <a href="#contact" class="btn-community">Ask About Group Sessions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section class="faq" id="faq">
+  <div class="blob blob-coral testimonials-blob"></div>
+  <div class="container">
+    <h2 class="section-title reveal">Frequently Asked Questions</h2>
+    <p class="section-subtitle reveal">Everything you need to know before getting started. Can't find your answer? Just ask.</p>
+    <div class="faq-list">
+      <div class="faq-group-title reveal">Personal Training</div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Do I need to be physically fit before starting?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Not at all. Every programme starts with a 90-minute assessment so Simon can understand where you are — and build from there. Many clients start as complete beginners.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Can I train from home?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Yes. Online sessions work brilliantly from home with minimal or no equipment — Simon will design your programme around whatever space and kit you have.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What happens during my first assessment?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Simon reviews your history, goals and lifestyle, then assesses your mobility, stabilisation, functional movement and strength. You'll leave with a clear, personalised plan — plus nutritional guidance.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Do you work with older adults?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Absolutely — many of Simon's longest-standing clients have trained with him for 15 years or more. Sessions focus on strength, balance, mobility and staying independent and confident.</p></div>
+      </div>
+
+      <div class="faq-group-title reveal">Reflexology &amp; Massage</div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What is Rho Shur reflexology?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Rho Shur is a deeper Taiwanese reflexology technique Simon learned in Penang, Malaysia. It works reflex points on the feet and most clients find it deeply relaxing.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What should I expect during my first treatment?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>A short consultation first, so Simon understands how you're feeling and what you'd like from the session. Then simply relax — you stay fully clothed apart from your shoes and socks.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How long does a treatment last?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Both reflexology and massage are available as 60 or 90-minute sessions, so you can choose what fits your schedule.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What's the difference between sports massage and therapeutic massage?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Sports massage focuses on muscles used in training and sport — firmer, targeted work. Therapeutic massage is about easing everyday tension and relaxation. Simon will recommend what's right for you.</p></div>
+      </div>
+
+      <div class="faq-group-title reveal">General</div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Where are sessions available?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Simon is in Mayfair, Central London on Wednesdays and Thursdays, and in Southsea, Portsmouth the rest of the week. Online coaching is available anywhere.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Do you offer online appointments?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Yes — personal training works fully online via live video sessions, and many clients have trained with Simon remotely for years.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How much do sessions cost?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Rates vary by service and location, and block booking discounts are available. Use the enquiry form below and Simon will come straight back to you with current prices.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How do I book?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><p>Fill in the contact form below, email <strong>siflannery@hotmail.com</strong> or call <strong>07775 894 421</strong> — whichever is easiest for you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT / CTA
+     ============================================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner reveal">
+      <h2>Ready to Feel Your Best?</h2>
+      <p>Whether you're after personal training in London, reflexology in Southsea, or online coaching from anywhere — get in touch and let's talk about what you need.</p>
+      <div class="contact-options">
+        <div class="contact-option">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          www.simonflannery.health
+        </div>
+        <div class="contact-option">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <a href="mailto:siflannery@hotmail.com" class="contact-link">siflannery@hotmail.com</a>
+        </div>
+        <div class="contact-option">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a href="tel:+447775894421" class="contact-link">07775 894 421</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-card reveal">
+      <form name="contact" method="POST" action="https://api.web3forms.com/submit" id="contactForm">
+        <input type="checkbox" name="botcheck" class="form-hidden">
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="form-field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="cf-phone">Phone (optional)</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <label for="cf-interest">Interested in</label>
+            <select id="cf-interest" name="interest">
+              <option>Personal Training</option>
+              <option>Online Personal Training</option>
+              <option>Reflexology</option>
+              <option>Therapeutic Massage</option>
+              <option>Group Training</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="cf-location">Preferred location</label>
+            <select id="cf-location" name="location">
+              <option>Central London (Mayfair / Kensington)</option>
+              <option>Portsmouth / Southsea</option>
+              <option>Online / not sure yet</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" required placeholder="Tell Simon a little about your goals..."></textarea>
+          </div>
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary">Send Enquiry</button>
+          </div>
+        </div>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>Thank you!</h4>
+        <p>Your enquiry has been sent. Simon will get back to you shortly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">
+      Simon Flannery
+      <span>Health &amp; Wellness</span>
+    </div>
+    <p class="footer-tagline">Personal Training · Reflexology · Massage · Group Training<br>London &amp; Portsmouth</p>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#locations">Locations</a>
+      <a href="#qualifications">Qualifications</a>
+      <a href="#contact">Contact</a>
+      <a href="#" id="privacyLink">Privacy</a>
+    </div>
+    <p class="footer-copy">© 2025 Simon Flannery. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============================================
+     PRIVACY POLICY MODAL
+     ============================================ -->
+<div class="privacy-modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+  <div class="privacy-backdrop" id="privacyBackdrop"></div>
+  <div class="privacy-box">
+    <button class="privacy-close" id="privacyClose" aria-label="Close privacy policy">&times;</button>
+    <h2 id="privacyTitle">Privacy Policy</h2>
+    <p>Simon Flannery Health &amp; Wellness ("I", "me") respects your privacy. This policy explains what personal information is collected through this website and how it is used.</p>
+    <h3>What I collect</h3>
+    <p>If you use the contact form or email me, I collect your name, email address, phone number (if provided) and the contents of your message. I use this information solely to respond to your enquiry and arrange sessions.</p>
+    <h3>How your information is used</h3>
+    <p>Your details are never sold, shared with third parties for marketing, or used for any purpose other than responding to your enquiry. Form submissions are processed by Web3Forms, which forwards them to Simon by email, on his behalf.</p>
+    <h3>Cookies &amp; analytics</h3>
+    <p>This website does not currently use tracking cookies or third-party analytics.</p>
+    <h3>Your rights</h3>
+    <p>Under UK data protection law (UK GDPR), you can request a copy of any personal information I hold about you, or ask for it to be corrected or deleted, at any time. Email <strong>siflannery@hotmail.com</strong>.</p>
+    <h3>Contact</h3>
+    <p>Questions about this policy? Email <strong>siflannery@hotmail.com</strong> or call 07775 894 421.</p>
+    <p style="font-size:0.82rem;opacity:0.7;margin-top:16px;">Last updated: October 2026</p>
+  </div>
+</div>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script>
+// Scroll reveal animation
+const reveals = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+reveals.forEach(el => revealObserver.observe(el));
+
+// Navbar background on scroll
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)';
+  } else {
+    navbar.style.boxShadow = 'none';
+  }
+});
+
+// Testimonials carousel (tablet / mobile: one card per view)
+const tGrid = document.getElementById('testimonialsGrid');
+if (tGrid) {
+  const tCards = Array.from(tGrid.querySelectorAll('.testimonial-card'));
+  const tDotsWrap = document.getElementById('testimonialDots');
+  const tPrev = document.getElementById('testimonialPrev');
+  const tNext = document.getElementById('testimonialNext');
+
+  tCards.forEach((card, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+    dot.addEventListener('click', () => tGoTo(i));
+    tDotsWrap.appendChild(dot);
+  });
+  const tDots = Array.from(tDotsWrap.children);
+
+  function tSlideWidth() {
+    return tCards[0].getBoundingClientRect().width;
+  }
+
+  function tIndex() {
+    const i = Math.round(tGrid.scrollLeft / tSlideWidth());
+    return Math.max(0, Math.min(tCards.length - 1, i));
+  }
+
+  function tGoTo(i) {
+    tGrid.scrollTo({ left: i * tSlideWidth(), behavior: 'smooth' });
+  }
+
+  function tUpdateDots() {
+    const i = tIndex();
+    tDots.forEach((d, j) => d.classList.toggle('active', j === i));
+  }
+
+  tPrev.addEventListener('click', () => tGoTo(Math.max(0, tIndex() - 1)));
+  tNext.addEventListener('click', () => tGoTo(Math.min(tCards.length - 1, tIndex() + 1)));
+  tGrid.addEventListener('scroll', () => requestAnimationFrame(tUpdateDots), { passive: true });
+}
+
+// Close mobile menu when a link is tapped
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.remove('mobile-open');
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item.open').forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.faq-a').style.maxHeight = null;
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+
+// Privacy policy modal
+const privacyModal = document.getElementById('privacyModal');
+document.getElementById('privacyLink').addEventListener('click', e => {
+  e.preventDefault();
+  privacyModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+function closePrivacy() {
+  privacyModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('privacyClose').addEventListener('click', closePrivacy);
+document.getElementById('privacyBackdrop').addEventListener('click', closePrivacy);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && privacyModal.classList.contains('open')) closePrivacy();
+});
+
+// Contact form — submit via Web3Forms, show inline thank-you
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  function contactViaEmail() {
+    const g = id => ((document.getElementById(id) || {}).value || '');
+    const subject = encodeURIComponent('Website enquiry — ' + g('cf-interest'));
+    const body = encodeURIComponent(
+      'Name: ' + g('cf-name') + '\n' +
+      'Email: ' + g('cf-email') + '\n' +
+      'Phone: ' + g('cf-phone') + '\n' +
+      'Interested in: ' + g('cf-interest') + '\n' +
+      'Preferred location: ' + g('cf-location') + '\n\n' +
+      'Message:\n' + g('cf-message')
+    );
+    window.location.href = 'mailto:siflannery@hotmail.com?subject=' + subject + '&body=' + body;
+  }
+
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+    const formData = new FormData(contactForm);
+    formData.append('access_key', 'f1f91a1d-0a14-48d4-aea4-c8bf12010d52');
+    formData.append('subject', 'New enquiry from simonflannery.health');
+    fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+      .then(r => r.json())
+      .then(data => {
+        if (data && data.success) {
+          contactForm.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          contactViaEmail();
+        }
+      })
+      .catch(() => contactViaEmail());
+  });
+}
+</script>
+
+</body>
+</html>
